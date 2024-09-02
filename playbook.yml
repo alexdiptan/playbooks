@@ -17,4 +17,4 @@
 
     - name: Print id
       ansible.builtin.debug:
-        msg: {{ hf2hf_new_organization_id }}
+        msg: "{{ hf2hf_new_organization_id }}"
