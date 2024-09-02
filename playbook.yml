@@ -5,3 +5,16 @@
     - name: "Debug"
       ansible.builtin.debug:
         msg: "Test debug"
+        
+    - name: Get new organization id
+      ansible.builtin.shell: |
+        grep 'New organization id' $(ls /Users/aleksandrdiptan/Downloads/import_*.log | grep -v 'errors') | awk '{print $8}'
+      register: hf2hf_import_organization_id
+    
+    - name: Set fact organization id
+      ansible.builtin.set_fact:
+        hf2hf_new_organization_id: "{{ hf2hf_import_organization_id.stdout }}"
+
+    - name: Print id
+      ansible.builtin.debug:
+        msg: {{ hf2hf_new_organization_id }}
