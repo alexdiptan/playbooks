@@ -18,3 +18,12 @@
     - name: Print id
       ansible.builtin.debug:
         msg: "{{ hf2hf_new_organization_id }}"
+        
+    - name: Get organization_id from server
+      ansible.builtin.fetch:
+        src: "{{ item }}"
+        dest: /{{ lookup('env','WORKSPACE') }}/
+        flat: true
+      with_items:
+        - "/tmp/104279.orgid"
+        - "/tmp/import_104279.log"
