@@ -27,3 +27,8 @@
     - name: Set fact filename
       ansible.builtin.set_fact:
         import_hf_xlsx_filename: "{{ import_get_hf_xlsx_filename.stdout[1] }}"
+
+    - name: Print filename
+      ansible.builtin.debug:
+        msg: "{{ import_hf_xlsx_filename }}"
+ 
