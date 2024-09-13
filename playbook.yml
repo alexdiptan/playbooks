@@ -27,3 +27,12 @@
       with_items:
         - "/tmp/104279.orgid"
         - "/tmp/import_1042791.log"
+
+    - name: Get filename
+      ansible.builtin.shell: | 
+        ls -lh /Users/aleksandrdiptan/ | grep 'tmp.log' | awk '{print $9}'
+      register: import_get_hf_xlsx_filename
+
+    - name: Set fact filename
+      ansible.builtin.set_fact:
+        import_hf_xlsx_filename: "{{ import_get_hf_xlsx_filename.stdout[1] }}"
