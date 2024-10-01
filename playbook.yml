@@ -38,5 +38,5 @@
         key_file: /Users/aleksandrdiptan/.ssh/id_rsa.pub
         accept_hostkey: true
         clone: true
-        dest: "{{ import_data_path }}"
-        version: "{{ git_branch }}"
+        dest: "/Users/aleksandrdiptan/Downloads"
+        version: "master"
