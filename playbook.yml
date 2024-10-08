@@ -3,7 +3,7 @@
   hosts: localhost
   become: no
   tasks:
-    - name: "Write log to file"
+    - name: Write log to file
       ansible.builtin.shell: |
         echo "123" {% if write_log_to_file %} >> /Users/aleksandrdiptan/Documents/1.log {% endif %)
         
