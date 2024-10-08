@@ -5,5 +5,5 @@
   tasks:
     - name: Write log to file
       ansible.builtin.shell: |
-        echo "123" >> /Users/aleksandrdiptan/Documents/1.log
+        echo "123" {% if write_log_to_file | bool %}>> /Users/aleksandrdiptan/Documents/1.log{% endif %} 
         
