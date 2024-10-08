@@ -3,7 +3,7 @@
   hosts: localhost
   become: no
   tasks:
-    - name: 
+    - name: "Write log to file"
       ansible.builtin.shell: |
         echo "123"
         
