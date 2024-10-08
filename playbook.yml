@@ -3,41 +3,7 @@
   hosts: localhost
   become: no
   tasks:
-    - name: "Debug"
-      ansible.builtin.debug:
-        msg: "Test debug"
-        
-    - name: Get new organization id
+    - name: 
       ansible.builtin.shell: |
-        grep 'New organization id' $(ls /Users/aleksandrdiptan/Downloads/import_*.log | grep -v 'errors') | awk '{print $8}'
-      register: hf2hf_import_organization_id
-    
-    - name: Set fact organization id
-      ansible.builtin.set_fact:
-        hf2hf_new_organization_id: "{{ hf2hf_import_organization_id.stdout }}"
-
-    - name: Print id
-      ansible.builtin.debug:
-        msg: "{{ hf2hf_new_organization_id }}"
+        echo "123"
         
-    - name: Get filename
-      ansible.builtin.shell: | 
-        ls -lh /Users/aleksandrdiptan/ | grep 'tmp.log' | awk '{print $9}'
-      register: import_get_hf_xlsx_filename
-
-    - name: Set fact filename
-      ansible.builtin.set_fact:
-        import_hf_xlsx_filename: "{{ import_get_hf_xlsx_filename.stdout }}"
-
-    - name: Print filename
-      ansible.builtin.debug:
-        msg: "{{ import_hf_xlsx_filename }}"
- 
-    - name: Git checkout huntflow
-      ansible.builtin.git:
-        repo: 'git@github.com:huntflow/huntflow.git'
-        key_file: /Users/aleksandrdiptan/.ssh/id_rsa.pub
-        accept_hostkey: true
-        clone: true
-        dest: "/Users/aleksandrdiptan/Downloads"
-        version: "master"
